@@ -42,6 +42,12 @@ RUN \
     git checkout v${STATIK} && \
     go install github.com/rakyll/statik
 
+# local needs until module used
+RUN \
+    go get -u -v github.com/radovskyb/watcher && \
+    go get -u -v github.com/spf13/viper && \
+    go get -u -v gopkg.in/gomail.v2
+
 ADD coverage.sh /script/coverage.sh
 ADD checkvendor.sh /script/checkvendor.sh
 ADD git-rev.sh /script/git-rev.sh
