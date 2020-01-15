@@ -6,7 +6,7 @@ ENV \
     TERM=xterm-color           \
     TIME_ZONE=Europe/Moscow  \
     APP_USER=app               \
-    APP_UID=1001               \
+    APP_UID=1000               \
     DOCKER_GID=999
 
 COPY files/scripts/nop.sh /usr/bin/nop.sh
