@@ -19,14 +19,16 @@ short_hash=${full_hash:0:7}
 log=$(tail -n1 .git/logs/$ref)
 log_elems=(${log// / })
 
+# 0000000000000000 8d39c3e9d85d044c7f5f Eugene <eugene@umputun.com> 1529212777 -0500	commit (initial): rev 1234
 e=${log_elems[3]}
 if [[ ${e:0:1} == "<" ]]; then
-    ts=$(date -d "@${log_elems[4]}" +'%Y%m%dT%H:%M:%S')
+    ts=$(date -d "@${log_elems[4]}" +'%Y%m%d-%H:%M:%S')
 fi
 
+# 0000000000000000 8d39c3e9d85d044c7f5f Eugene Umputun <eugene@umputun.com> 1529212777 -0500	commit (initial): rev 1234
 e=${log_elems[4]}
 if [[ ${e:0:1} == "<" ]]; then
-    ts=$(date -d "@${log_elems[5]}" +'%Y%m%dT%H:%M:%S')
+    ts=$(date -d "@${log_elems[5]}" +'%Y%m%d-%H:%M:%S')
 fi
 
-echo "$head"-"$short_hash"-"$ts"
+echo $head-$short_hash-$ts
